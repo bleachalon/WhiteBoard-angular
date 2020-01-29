@@ -1,8 +1,84 @@
 <ul class="list-group">
   <li *ngFor="let widget of Widgets" class="list-group-item">
     <div *ngIf="widget.type == 'heading' ">
+          <h1>Heading Widget</h1>
+          <label for="heading">Heading</label>
+          <input id="heading" class="form-control mb-3" placeholder="Heading text" value="{{widget.text}}"
+                 (change)="Widget.text = $event.target.value"/>
+
+          <label for="size">Heading Size</label>
+          <select
+            id="size"
+            class= "custom-select mt-1 mb-3" ngModel="{{widget.size}}"
+            (change)="Widget.size = $event.target.value">
+          <option value="1">Heading 1</option>
+          <option value="2">Heading 2</option>
+          <option value="3">Heading 3</option>
+          <option value="4">Heading 4</option>
+          <option value="5">Heading 5</option>
+          </select>
+
+          <label for="name1">Widegt Name</label>
+          <input id="name1" class="form-control mb-3" placeholder="Widegt Name">
+
+          <h2>Preview</h2>
+          <h1 *ngIf="widget.size == 1">{{widget.text}}</h1>
+          <h2 *ngIf="widget.size == 2">{{widget.text}}</h2>
+          <h3 *ngIf="widget.size == 3">{{widget.text}}</h3>
+          <h4 *ngIf="widget.size == 4">{{widget.text}}</h4>
+      </div>
+
+    <div *ngIf="widget.type == 'Image' ">
+      <h1>Image Widget</h1>
+      <label for="url">URL</label>
+      <input id="url" class="form-control mb-3" placeholder="Image Url" value="{{widget.src}}"
+             (change)="Widget.src=$event.target.value"/>
+
+      <label for="name2">Widegt Name</label>
+      <input id="name2" class="form-control mb-3" placeholder="Widegt Name">
+
+      <h2>Preview</h2>
+
+      <img class="img-thumbnail" src="{{widget.src}}" alt="please enter valid url">
 
     </div>
+
+    <div *ngIf="widget.type == 'List' ">
+      <h1>List Widget</h1>
+      <label for="list" >List Item</label>
+      <textarea
+        (ngModelChange)="widget.text = $event.target.value"
+        class="form-control mb-3"
+        id="list"
+        ngModel="{{widget.text}}"
+        placeholder="Enter one list item per line"></textarea>
+
+      <label for="name3"></label>
+      <select id="name3"
+        (ngModelChange)="Widget.order = $event.target.value" class="custom-select" ngModel="{{widget.order}}">
+      <option value= "unordered" >Unordered List</option>
+      <option value= "ordered">Ordered List</option>
+      </select>
+
+
+      <label for="name">Widegt Name</label>
+      <input id="name" class="form-control mb-3" placeholder="Widegt Name">
+
+      <h2>Preview</h2>
+
+      <ul *ngIf="widget.order == 'unordered'">
+        <li *ngFor="let item of splitList(widget.text)">
+          {{item}}
+        </li>
+      </ul>
+      <ol *ngIf="widget.order == 'ordered'">
+        <li *ngFor="let item of splitList(widget.text)">
+          {{item}}
+        </li>
+      </ol>
+
+    </div>
+
   </li>
 </ul>
 <button class="btn btn-dark btn-lg btn-block">Add Widget</button>

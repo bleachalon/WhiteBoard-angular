@@ -14,6 +14,7 @@ import {TopicServiceClient} from './services/TopicServiceClient';
 import {WidgetServiceClient} from './services/WidgetServiceClient';
 import { TopicPillsComponent } from './topic-pills/topic-pills.component';
 import { WidgetListComponent } from './widget-list/widget-list.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { WidgetListComponent } from './widget-list/widget-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     CourseServiceClient,

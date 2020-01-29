@@ -15,7 +15,10 @@ export class WidgetListComponent implements OnInit {
     mid;
     lid;
     Widget = {
-      title: 'newWidget'
+      title: 'newWidget',
+      text: '',
+      size: '1',
+      src: ''
     }
   ngOnInit() {
     this.router.params.subscribe(params => { this.cid = params.cid; this.mid = params.mid; this.lid = params.lid; });
@@ -33,5 +36,8 @@ export class WidgetListComponent implements OnInit {
   }
   updateWidget(wid) {
       this.service.updateWidget(wid, this.Widget).then( () => this.findWidgetsForLesson());
+  }
+  splitList(s) {
+      return s.split(' ');
   }
 }
