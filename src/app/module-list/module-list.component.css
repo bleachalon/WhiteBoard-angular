@@ -1,0 +1,8 @@
+a{
+  color: black;
+}
+
+.list-group > .active{
+  background-color: #ebebeb;
+  border-color: dodgerblue;
+}

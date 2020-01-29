@@ -1,0 +1,14 @@
+<div>
+  <ul class="nav nav-tabs">
+    <li *ngFor="let lesson of Lessons" class="nav-item mr-2">
+      <a  *ngIf="edit==false" class="nav-link" routerLink="/courses/{{cid}}/modules/{{mid}}/lessons/{{lesson.id}}/topics" [ngClass]="{'active': lesson.id == lid}">{{lesson.title}}</a>
+      <input *ngIf="edit" class="form-control" value="{{lesson.title}}" (change)="Lesson.title=$event.target.value">
+
+      <button *ngIf="edit==false" class="btn float-right btn-outline-primary" (click)="edit=!edit">Edit</button>
+      <button *ngIf="edit" class="btn btn-outline-primary float-right" (click)="updateLesson(lesson.id)">Done</button>
+
+      <button class="btn btn-outline-danger mr-1 float-right" (click)="deleteLesson(lesson.id)">X</button>
+    </li>
+    <li class="list-group"><button class="btn btn-dark mt-1" (click)="createLesson()">Add</button></li>
+  </ul>
+</div>

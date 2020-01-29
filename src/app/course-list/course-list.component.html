@@ -1,0 +1,32 @@
+
+<div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th class="d-none d-md-table-cell" scope="col">Modified date</th>
+      <th scope="col">Delete\Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let course of Courses">
+
+      <td *ngIf="edit" scope="row"><a routerLink="/courses/{{course.id}}/modules">{{course.title}}</a></td>
+      <td *ngIf="edit==false"><input class="form-control" value="{{course.title}}" (change)="Course.title = $event.target.value"></td>
+
+      <td *ngIf="edit">{{course.author}}</td>
+      <td *ngIf="edit==false"><input class="form-control" value="{{course.author}}" (change)="Course.author = $event.target.value"></td>
+
+      <td>{{course.date}}</td>
+      <td>
+        <button class="btn btn-outline-danger mr-2" (click)="deleteCourse(course.id)">X</button>
+        <button *ngIf="edit" class="btn btn-outline-info" (click)="edit = !edit">Edit</button>
+        <button *ngIf="edit==false" class="btn btn-outline-info"
+                (click)="updateCourse(course.id)">Done</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-dark btn-lg btn-block" (click)="createCourse()">Add Course</button>
+</div>

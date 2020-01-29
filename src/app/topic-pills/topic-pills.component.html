@@ -1,0 +1,8 @@
+<div>
+  <ul class="nav nav-pills">
+    <li *ngFor="let topic of Topics" class="nav-item mr-2">
+      <a class="nav-link" routerLink="/courses/{{cid}}/modules/{{mid}}/lessons/{{lid}}/topics/{{topic.id}}/widgets"
+        [ngClass]="{'active': topic.id == tid}">{{topic.title}}</a>
+    </li>
+  </ul>
+</div>
